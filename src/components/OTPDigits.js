@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Intent, Spinner } from '@blueprintjs/core';
 import * as OTPAuth from 'otpauth';
+import { getThemeProp } from '../utils';
 
 const Container = styled.div`
   display: flex;
@@ -19,7 +20,6 @@ const DigitsContainer = styled.div`
   cursor: pointer;
 `;
 const Digits = styled.span`
-  color: #222;
   font-family: monospace;
   font-size: 2em;
 `;

@@ -1,6 +1,11 @@
 import { Colors } from '@blueprintjs/core';
 
+export type ButtercupTheme = typeof light;
+
 const light = {
+  common: {
+    text: '#000'
+  },
   vault: {
     list: {
       focusedBackgroundColor: Colors.LIGHT_GRAY5,
@@ -28,7 +33,10 @@ const light = {
   }
 };
 
-const dark = {
+const dark: ButtercupTheme = {
+  common: {
+    text: '#f5f8fa'
+  },
   vault: {
     list: {
       focusedBackgroundColor: Colors.DARK_GRAY5,
