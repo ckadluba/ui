@@ -33,7 +33,9 @@
   },
   "jest": {
     "moduleFileExtensions": [
-      "js"
+      "js",
+      "tsx",
+      "ts"
     ],
     "moduleDirectories": [
       "src",
