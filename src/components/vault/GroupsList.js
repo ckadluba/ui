@@ -45,7 +45,7 @@ const Tree = styled(BaseTree)`
   }
 `;
 
-const GroupsList = () => {
+const GroupsList = ({ renderGroupsPaneTitle }) => {
   const [groupsContextOpen, setGroupsContextOpen] = useState(false);
   const [groupEditID, setGroupEditID] = useState(null);
   const [parentGroupID, setParentGroupID] = useState(null);
@@ -184,11 +184,13 @@ const GroupsList = () => {
     closeEditDialog();
   };
 
+  const title = renderGroupsPaneTitle ? renderGroupsPaneTitle() : 'Groups';
+
   return (
     <>
       <PaneContainer primary>
         <PaneHeader
-          title="Groups"
+          title={title}
           count={groups.length}
           filter={filters}
           onAddItem={() => editGroup()}
@@ -252,6 +254,10 @@ const GroupsList = () => {
       </Dialog>
     </>
   );
+};
+
+GroupsList.propTypes = {
+  renderGroupsPaneTitle: PropTypes.func
 };
 
 export default GroupsList;

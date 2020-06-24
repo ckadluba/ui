@@ -14,19 +14,28 @@ module.exports = {
     })
   ],
   entry: {
-    index: './src/index.js',
+    index: './src/index.ts',
     styles: './src/styles/index.scss'
   },
   devtool: false,
   output: {
     libraryTarget: 'commonjs2',
-    // filename: '[name].[ext]',
     path: path.resolve(__dirname, 'dist')
+  },
+  resolve: {
+    extensions: ['.js', '.ts', '.tsx', '.d.ts']
   },
   module: {
     rules: [
       {
         test: /\.m?js$/,
+        exclude: /(node_modules)/,
+        use: {
+          loader: 'babel-loader'
+        }
+      },
+      {
+        test: /\.tsx?$/,
         exclude: /(node_modules)/,
         use: {
           loader: 'babel-loader'
@@ -66,7 +75,7 @@ module.exports = {
     ]
   },
   node: {
-    fs: "empty"
+    fs: 'empty'
   },
   optimization: {
     minimizer: [
@@ -81,8 +90,8 @@ module.exports = {
   externals: [
     ...Object.keys(pkg.dependencies),
     ...Object.keys(pkg.peerDependencies),
-    "react",
-    "react-dom"
+    'react',
+    'react-dom'
   ],
   mode: 'production'
 };

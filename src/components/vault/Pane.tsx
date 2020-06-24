@@ -1,17 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { Button, Classes, Icon, InputGroup, Menu, MenuItem, Popover, Tag } from '@blueprintjs/core';
+import React, { useEffect, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
-import { ReflexElement } from 'react-reflex';
-import {
-  Tag,
-  Colors,
-  Button,
-  Popover,
-  Menu,
-  MenuItem,
-  InputGroup,
-  Classes,
-  Icon
-} from '@blueprintjs/core';
 import { getThemeProp } from '../../utils';
 
 const NOOP = () => {};
@@ -47,16 +36,12 @@ const ListHeadingContent = styled.div`
   margin-right: 5px;
 `;
 
-export const Pane = styled(ReflexElement)`
-  display: grid;
-  grid-template-rows: 1fr;
-`;
-
-export const PaneContainer = styled.div`
+export const PaneContainer = styled.div<{ primary?: boolean }>`
   display: grid;
   overflow: hidden;
+  height: 100%;
   background-color: ${props => props.primary && getThemeProp(props, 'colors.mainPaneBackground')};
-  grid-template-rows: 55px 1fr 40px;
+  grid-template-rows: 55px 1fr 50px;
   grid-template-areas:
     'header'
     'body'
@@ -70,7 +55,7 @@ export const PaneContainer = styled.div`
     `};
 `;
 
-export const PaneContent = styled.div`
+export const PaneContent = styled.div<{ bleed?: boolean }>`
   grid-area: body;
   overflow: auto;
   padding: 0.5rem;
@@ -83,11 +68,20 @@ export const PaneFooter = styled.div`
   grid-area: footer;
   display: flex;
   align-items: center;
-  padding: 0 0.5rem;
+  padding: 0.5rem;
   border-top: 1px solid ${props => getThemeProp(props, 'colors.divider')};
 `;
 
-export const PaneHeader = ({
+interface PaneHeaderProps {
+  count: number;
+  title: string | JSX.Element;
+  filter: any;
+  onAddItem: any;
+  onTermChange: any;
+  onSortModeChange: any;
+}
+
+export const PaneHeader: React.FunctionComponent<PaneHeaderProps> = ({
   count,
   title,
   filter = null,
@@ -119,13 +113,13 @@ export const PaneHeader = ({
     <Menu>
       <MenuItem
         text="Alphabetical"
-        label={filter && filter.sortMode === 'az' ? checkedIcon : ''}
+        labelElement={filter && filter.sortMode === 'az' ? checkedIcon : ''}
         icon="sort-alphabetical"
         onClick={() => onSortModeChange('az')}
       />
       <MenuItem
         text="Alphabetical"
-        label={filter && filter.sortMode === 'za' ? checkedIcon : ''}
+        labelElement={filter && filter.sortMode === 'za' ? checkedIcon : ''}
         icon="sort-alphabetical-desc"
         onClick={() => onSortModeChange('za')}
       />

@@ -12,6 +12,10 @@ module.exports = {
         ]
       },
       {
+        test: /\.tsx?$/,
+        use: ['babel-loader']
+      },
+      {
         test: /\.scss$/,
         use: [
           'style-loader', // creates style nodes from JS strings

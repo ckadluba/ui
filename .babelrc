@@ -1,18 +1,22 @@
 {
-    "presets": [
-        "@babel/preset-react",
-        ["@babel/preset-env", {
-            "targets": {
-                "chrome": 70
-            },
-            "useBuiltIns": false
-        }]
-    ],
-    "plugins": [
-        "ramda",
-        "@babel/plugin-proposal-object-rest-spread",
-        "@babel/plugin-proposal-class-properties",
-        "@babel/plugin-proposal-function-bind",
-        "jsx-control-statements"
+  "presets": [
+    "@babel/preset-react",
+    "@babel/preset-typescript",
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "chrome": 70
+        },
+        "useBuiltIns": false
+      }
     ]
+  ],
+  "plugins": [
+    "ramda",
+    "@babel/plugin-proposal-object-rest-spread",
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-proposal-function-bind",
+    "jsx-control-statements"
+  ]
 }

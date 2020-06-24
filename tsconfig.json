@@ -3,17 +3,15 @@
   "include": ["./src/**/*"],
 
   "compilerOptions": {
-    // Tells TypeScript to read JS files, as
-    // normally they are ignored as source files
+    "lib": ["DOM", "ESNext"],
+    "target": "ES2016",
+    "moduleResolution": "node",
     "allowJs": true,
-    // Generate d.ts files
+    "jsx": "react",
     "declaration": true,
-    // This compiler run should
-    // only output d.ts files
     "emitDeclarationOnly": true,
-    // Types should go into this directory.
-    // Removing this would place the .d.ts files
-    // next to the .js files
+    "esModuleInterop": true,
     "outDir": "dist"
-  }
+  },
+  "exclude": ["node_modules"]
 }

@@ -10,7 +10,8 @@ import {
 } from 'buttercup/web';
 import { ThemeProvider } from 'styled-components';
 import randomWords from 'random-words';
-import { VaultProvider, VaultUI, themes } from '../src/index';
+import { VaultProvider, themes } from '../src/index';
+import VaultUI from '../src/components/vault/VaultUI';
 
 try {
   initButtercup();
@@ -104,6 +105,7 @@ function processVaultUpdate(archive, facade) {
 
 const View = styled.div`
   height: calc(100vh - 1rem);
+  position: relative;
   width: 100%;
 `;
 

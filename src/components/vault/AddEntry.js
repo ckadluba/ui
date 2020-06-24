@@ -28,6 +28,7 @@ const AddEntry = ({ disabled }) => {
         text="New Entry"
         onClick={() => onAddEntry(defaultEntryType)}
         disabled={disabled}
+        fill
       />
       <Popover content={renderMenu} boundary="viewport">
         <Button icon="more" disabled={disabled} />
